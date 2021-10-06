@@ -2,13 +2,10 @@
 - name: Set up dotfiles
   hosts: localhost
   tasks:
-  - name: Replace bashrc
-    copy:
-      src: "files/.bashrc"
-      dest: "{{ lookup('env','HOME') + '/.bashrc'}}"
+  - name: Copy all dotfiles
+    copy: 
+      src: "{{ item }}"
+      dest: "{{ lookup('env','HOME') + '/' }}"
       mode: '0644'
-  - name: Replace tmux
-    copy:
-      src: "files/.tmux.conf"
-      dest: "{{ lookup('env','HOME') + '/.tmux.conf'}}"
-      mode: '0644'
+    with_items:
+      - "{{ playbook_dir + '/files/' }}"
