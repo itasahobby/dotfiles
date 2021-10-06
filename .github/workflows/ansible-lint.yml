@@ -15,6 +15,6 @@ jobs:
       with:
         targets: "dotfiles.yml"
         override-deps: |
-          ansible==2.11.5
+          ansible==2.10.7
           ansible-lint==5.2.0
         args: ""
